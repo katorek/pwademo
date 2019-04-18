@@ -32,6 +32,15 @@ export class AppComponent {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
+
+  onSwipe(evt, nav: MatSidenav) {
+    const x = Math.abs(evt.deltaX) > 40 ? (evt.deltaX > 0 ? 'right' : 'left'):'';
+    if ( x =="left") {
+      nav.close();
+    } else if (x == "right") {
+      nav.open()
+    }
+  }
   
   toggleMobileNav(nav: MatSidenav) {
     if (this.mobileQuery.matches) {
