@@ -12,6 +12,7 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  
   title = 'Material PWA';
   mobileQuery: MediaQueryList;
   nav = [

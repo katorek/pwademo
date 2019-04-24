@@ -61,6 +61,7 @@ a {
 
 .sidenav-container {
     height: 90%;
+    flex: 1;
 }
 
 .app-content {
@@ -80,3 +81,13 @@ a {
 .active {
     color: mat-color($app-active);
 }
+
+.is-mobile .toolbar {
+    position: fixed;
+    z-index: 2;
+}
+
+.is-mobile .sidenav-container {
+    flex: 1 0 auto;
+}
+  
