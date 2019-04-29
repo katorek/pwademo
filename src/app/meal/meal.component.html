@@ -1,0 +1,46 @@
+<div><div>
+  <mat-form-field>
+    <mat-label>Kategorie</mat-label>
+    <mat-select [formControl]="categories" multiple (selectionChange)="categoryListChanged($event)">
+      <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtr">
+  </mat-form-field>
+
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id.</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Produkt</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="avgWeight">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Waga [g]</th>
+        <td mat-cell *matCellDef="let element"> {{element.avgWeight}}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <!--<ng-container matColumnDef="category">-->
+        <!--<th mat-header-cell *matHeaderCellDef> Kategoria</th>-->
+        <!--<td mat-cell *matCellDef="let element"> {{element.category}}</td>-->
+      <!--</ng-container>-->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
