@@ -17,6 +17,7 @@ export class HttpbaseService {
   }
 
   getAll<T>() {
+    console.log(this.endpoint);
     return this.httpClient.get<T>(this.endpoint, { observe: 'response' });
   }
 
